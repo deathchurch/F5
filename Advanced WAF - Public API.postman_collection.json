@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "6d464fac-fb11-4e1c-897b-ac1a16b2cef1",
+		"name": "Advanced WAF - Public API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://hackazon.f5demo.com/api/auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb169b53-4aab-49e5-aeb2-8c6fd4e782c7",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:41.0) Gecko/20100101 Firefox/41.0"
+					}
+				],
+				"url": {
+					"raw": "http://hackazon.f5demo.com/api/auth",
+					"protocol": "http",
+					"host": [
+						"hackazon",
+						"f5demo",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth"
+					]
+				},
+				"description": "Apache Struts2 Jakarta Multipart Parser - gift"
+			},
+			"response": []
+		},
+		{
+			"name": "http://hackazon.f5demo.com/api/product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:41.0) Gecko/20100101 Firefox/41.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://hackazon.f5demo.com/api/product",
+					"protocol": "http",
+					"host": [
+						"hackazon",
+						"f5demo",
+						"com"
+					],
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://protected.f5demo.com/api/contactMessages",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (compatible; Nmap Scripting Engine; https://nmap.org/book/nse.html)"
+					}
+				],
+				"url": {
+					"raw": "http://hackazon.f5demo.com/api/contactMessages",
+					"protocol": "http",
+					"host": [
+						"hackazon",
+						"f5demo",
+						"com"
+					],
+					"path": [
+						"api",
+						"contactMessages"
+					]
+				},
+				"description": "Nmap Vulnerability Scanning"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "df0ae0ab-0d1e-4d36-a23d-7c619f98230e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d373a530-6cf1-488a-aa19-12dd963cd401",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
